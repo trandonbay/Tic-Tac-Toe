@@ -44,7 +44,6 @@ function setGame() {
 function setTile() {
     // if someone won, then no more clicks
     if (gameOver) {
-        location.reload();
         return;
     }
 
@@ -83,7 +82,7 @@ function checkWinner() {
     var announceWinner = function announceWinner(player) {
         setTimeout(function() {
             alert(player + " is the winner!");
-            window.location.reload();
+            location.reload(true);
         });
     }
 
@@ -151,7 +150,7 @@ function checkTie() {
         gameOver = true;
         setTimeout(function() { 
             alert("TIE!");
-            window.location.reload();
+            location.reload(true);
         });
     }
 }
