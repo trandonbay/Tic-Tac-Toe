@@ -44,6 +44,7 @@ function setGame() {
 function setTile() {
     // if someone won, then no more clicks
     if (gameOver) {
+        location.reload();
         return;
     }
 
@@ -79,6 +80,13 @@ function setTile() {
 }
 
 function checkWinner() {
+    var announceWinner = function announceWinner(player) {
+        setTimeout(function() {
+            alert(player + " is the winner!");
+            window.location.reload();
+        });
+    }
+
     // horizontally
     for (let r = 0; r < 3; r++) {
         if(board[r][0] == board[r][1] && board[r][1] == board[r][2] && board[r][0] != ' ') {
@@ -88,7 +96,7 @@ function checkWinner() {
             }
             gameOver = true;
             let player = curPlayer;
-            setTimeout(function() { alert(player + " is the winner!"); });
+            announceWinner(player);
             return;
         }
     }
@@ -102,7 +110,7 @@ function checkWinner() {
             }
             gameOver = true;
             let player = curPlayer;
-            setTimeout(function() { alert(player + " is the winner!"); });
+            announceWinner(player);
             return;
         }
     }
@@ -115,7 +123,7 @@ function checkWinner() {
         }
         gameOver = true;
         let player = curPlayer;
-        setTimeout(function() { alert(player + " is the winner!"); });
+        announceWinner(player);
         return;
     }
 
@@ -133,7 +141,7 @@ function checkWinner() {
 
         gameOver = true;
         let player = curPlayer;
-        setTimeout(function() { alert(player + " is the winner!"); });
+        announceWinner(player);
         return;
     }
 }
@@ -141,6 +149,9 @@ function checkWinner() {
 function checkTie() {
     if (!gameOver && moves == 9) {
         gameOver = true;
-        setTimeout(function() { alert("TIE!"); });
+        setTimeout(function() { 
+            alert("TIE!");
+            window.location.reload();
+        });
     }
 }
